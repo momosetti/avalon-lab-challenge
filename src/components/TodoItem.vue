@@ -3,6 +3,7 @@
     <label>
       <input type="checkbox" :checked="completed" @change="emitToggle" />
       <span>{{ title }}</span>
+      <slot></slot>
     </label>
   </div>
 </template>

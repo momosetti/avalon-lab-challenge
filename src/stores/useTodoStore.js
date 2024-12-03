@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import axios from 'axios' // For API calls
+import axios from 'axios'
 
 export const useTodoStore = defineStore('todo', {
   state: () => ({
@@ -11,8 +11,8 @@ export const useTodoStore = defineStore('todo', {
     // Fetch todo items from backend
     async fetchTodos() {
       try {
-        const response = await axios.get('/api/todos') // API endpoint to fetch todos
-        this.todos = response.data // Populate state with fetched data
+        const response = await axios.get('/api/todos')
+        this.todos = response.data
         this.error = null
       } catch (error) {
         this.error = error.response?.data?.message || 'Failed to fetch todos'
@@ -22,8 +22,11 @@ export const useTodoStore = defineStore('todo', {
     // Add a new todo
     async addTodo(title) {
       try {
-        const response = await axios.post('/api/todos', { title, completed: false })
-        this.todos.push(response.data) // Add the new to-do to the state
+        const response = await axios.post('/api/todos', {
+          title,
+          completed: false,
+        })
+        this.todos.push(response.data)
         this.error = null
       } catch (error) {
         this.error = error.response?.data?.message || 'Failed to add todo'
@@ -33,8 +36,8 @@ export const useTodoStore = defineStore('todo', {
     // Remove a todo
     async removeTodo(id) {
       try {
-        await axios.delete(`/api/todos/${id}`) // API endpoint to delete a todo
-        this.todos = this.todos.filter((todo) => todo.id !== id) // Remove from state
+        await axios.delete(`/api/todos/${id}`)
+        this.todos = this.todos.filter((todo) => todo.id !== id)
         this.error = null
       } catch (error) {
         this.error = error.response?.data?.message || 'Failed to remove todo'
@@ -48,7 +51,7 @@ export const useTodoStore = defineStore('todo', {
         if (!todo) throw new Error('Todo not found')
 
         const updatedTodo = { ...todo, completed: !todo.completed }
-        await axios.put(`/api/todos/${id}`, updatedTodo) // API endpoint to update the todo
+        await axios.put(`/api/todos/${id}`, updatedTodo)
 
         // Update state
         todo.completed = updatedTodo.completed
