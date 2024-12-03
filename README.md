@@ -65,7 +65,7 @@ This project is a **Todo List Application** built using Vue 3 with the Compositi
 1. Clone the repository:
 
    ```bash
-   git clone <repo_url>
+   git clone https://github.com/momosetti/avalon-lab-challenge
    ```
 
 2. Install dependencies:
@@ -160,15 +160,6 @@ backend/
    - Toggle the completion status using the checkbox.
    - Remove a todo using the delete button.
    - Filter todos using the dropdown.
-
----
-
-## **Future Improvements**
-
-- Add user authentication for personalized todo lists.
-- Use a relational database (e.g., PostgreSQL) for advanced queries and scalability.
-- Enhance the UI/UX with animations and themes.
-- Implement testing (unit and integration tests).
 
 ---
 
